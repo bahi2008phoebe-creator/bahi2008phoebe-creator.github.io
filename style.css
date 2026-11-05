@@ -267,62 +267,147 @@ section {
     padding: 25px;
 }
 
-.profile-card {
+.code-card {
     position: relative;
     z-index: 1;
-    padding: 38px 24px;
-    text-align: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 25px;
+    padding: 24px;
+    background: linear-gradient(145deg, var(--surface), #0e1424);
+    border: 1px solid rgba(139, 92, 246, 0.22);
+    border-radius: 22px;
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
 }
 
-.profile-avatar {
-    width: 125px;
-    height: 125px;
-    margin: 0 auto 20px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-    color: white;
-    font-size: 66px;
-    font-weight: 800;
-}
-
-.profile-label {
-    color: var(--secondary);
+.code-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
     font-size: 11px;
-    font-weight: 800;
     letter-spacing: 1.5px;
 }
 
-.profile-card h3 {
-    margin: 8px 0;
-    font-size: 26px;
-}
-
-.profile-status {
+.code-dots {
     display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 22px;
-    padding: 7px 12px;
-    background: var(--surface-light);
-    border-radius: 30px;
-    font-size: 12px;
+    gap: 7px;
 }
 
-.status-dot {
+.code-dots span {
     width: 9px;
     height: 9px;
     border-radius: 50%;
+    background: var(--primary);
+}
+
+.code-dots span:nth-child(2) {
+    background: var(--secondary);
+}
+
+.code-dots span:nth-child(3) {
     background: #4ade80;
+}
+
+.code-content {
+    overflow-x: auto;
+    padding: 20px 0;
+    color: var(--text);
+    font: 13px/1.9 Consolas, "Courier New", monospace;
+    animation: code-scroll 9s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+.code-window {
+    height: 265px;
+    overflow: hidden;
+}
+
+.code-card:hover .code-content,
+.code-card:focus-within .code-content {
+    animation-play-state: paused;
+}
+
+@keyframes code-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-52px);
+    }
+}
+
+.code-keyword {
+    color: #a78bfa;
+}
+
+.code-string {
+    color: #4ade80;
+}
+
+.code-content a {
+    text-decoration: none;
+}
+
+.code-content a:hover .code-string,
+.code-content a:focus-visible .code-string {
+    text-decoration: underline;
+}
+
+.code-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+}
+
+.profile-initials {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #0b1020;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.profile-details {
+    display: grid;
+    gap: 2px;
+}
+
+.profile-details strong {
+    font-size: 13px;
+}
+
+.profile-details small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.profile-status {
+    width: 8px;
+    height: 8px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #4ade80;
+}
+
+.code-profile-link:hover,
+.code-profile-link:focus-visible {
+    color: var(--secondary);
+}
+
+.code-profile-link:hover .profile-details strong,
+.code-profile-link:focus-visible .profile-details strong {
+    text-decoration: underline;
 }
 
 .floating-tag {
@@ -771,10 +856,6 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .profile-card {
-        padding: 30px 15px;
-    }
-
     .timeline-card {
         padding: 19px;
     }
@@ -789,5 +870,10 @@ section {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+    }
+
+    .code-content {
+        animation: none;
+        transform: none;
     }
 }

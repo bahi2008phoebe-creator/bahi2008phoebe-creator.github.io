@@ -326,10 +326,10 @@ section {
 .code-card {
     position: relative;
     z-index: 1;
-    padding: 26px;
-    background: linear-gradient(145deg, var(--surface), #0e1424);
-    border: 1px solid rgba(155, 131, 255, 0.2);
-    border-radius: 22px;
+    padding: 22px 24px 18px;
+    background: linear-gradient(155deg, #101627, #0b1735 75%, #101a32);
+    border: 1px solid rgba(155, 131, 255, 0.24);
+    border-radius: 20px;
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.38);
     transform: rotate(0.5deg);
 }
@@ -337,26 +337,25 @@ section {
 .code-card-header {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 12px;
-    padding-bottom: 15px;
+    min-height: 42px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
     color: var(--muted);
-    font-size: 11px;
-    letter-spacing: 1.5px;
+    font-size: 12px;
 }
 
 .code-dots {
     display: flex;
-    gap: 5px;
-    margin-right: auto;
+    gap: 6px;
 }
 
 .code-dots span {
-    width: 7px;
-    height: 7px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
-    background: var(--primary);
+    background: #fb7185;
 }
 
 .code-dots span:nth-child(2) {
@@ -367,11 +366,26 @@ section {
     background: #4ade80;
 }
 
+.code-filename {
+    color: #d3d9ec;
+    font-size: 13px;
+}
+
+.code-menu {
+    color: #aab4cf;
+    letter-spacing: 3px;
+}
+
 .code-content {
-    overflow: visible;
-    padding: 20px 0;
-    color: var(--text);
+    margin: 0;
+    padding: 18px 0;
+    color: #e6eaff;
     font: 13px/1.9 Consolas, "Courier New", monospace;
+    white-space: normal;
+}
+
+.code-content code {
+    display: block;
 }
 
 .code-window {
@@ -380,7 +394,7 @@ section {
 }
 
 .code-scroller {
-    animation: code-scroll 12s ease-in-out infinite alternate;
+    animation: code-scroll 12s linear infinite alternate;
     will-change: transform;
 }
 
@@ -395,20 +409,21 @@ section {
     }
 
     to {
-        transform: translateY(-45%);
+        transform: translateY(min(0px, calc(300px - 100%)));
     }
 }
 
 .code-keyword {
-    color: #a78bfa;
+    color: #c4b5fd;
+    font-weight: 700;
 }
 
 .code-comment {
-    color: var(--muted);
+    color: #9aa8ca;
 }
 
 .code-string {
-    color: #4ade80;
+    color: #a5e0ff;
 }
 
 .code-content a {
@@ -420,56 +435,31 @@ section {
     text-decoration: underline;
 }
 
-.code-profile,
-.code-profile-link {
-    display: flex;
-    align-items: center;
+.code-line {
+    display: grid;
+    grid-template-columns: 2ch minmax(0, 1fr);
     gap: 12px;
-    margin-top: 15px;
-    padding-top: 15px;
+    min-height: 1.9em;
+}
+
+.code-line > span:last-child {
+    min-width: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.code-line-number {
+    color: #7583a5;
+    text-align: right;
+    user-select: none;
+}
+
+.code-card-footer {
+    padding-top: 12px;
     border-top: 1px solid var(--border);
-    color: var(--text);
-}
-
-.code-profile-link:hover .profile-details strong,
-.code-profile-link:focus-visible .profile-details strong {
-    color: var(--secondary);
-}
-
-.profile-initials {
-    display: grid;
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
-    place-items: center;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: #0b1020;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-.profile-details {
-    display: grid;
-    gap: 2px;
-}
-
-.profile-details strong {
-    font-size: 13px;
-}
-
-.profile-details small {
-    color: var(--muted);
-    font-size: 11px;
-}
-
-.profile-status {
-    width: 8px;
-    height: 8px;
-    margin-left: auto;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 12px rgba(74, 222, 128, 0.45);
+    color: #aab4cf;
+    font-size: 12px;
+    text-align: right;
 }
 
 .floating-tag {
@@ -876,7 +866,7 @@ section {
 
     .hero-visual {
         width: 100%;
-        max-width: 450px;
+        max-width: 620px;
         margin: 0 auto;
     }
 
@@ -916,6 +906,19 @@ section {
 
     .hero h2 {
         font-size: 19px;
+    }
+
+    .code-card {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .code-content {
+        font-size: 11px;
+    }
+
+    .code-line {
+        gap: 9px;
     }
 
     .hero-buttons {
